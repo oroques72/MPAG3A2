@@ -1,0 +1,466 @@
+= OPTIweb : Documentation Technique
+:Author:  DUT/INFO/M3301
+:lang: fr
+
+*********************
+'OPTIweb.html' est une application HTML de *consultation*
+des projets tutorés gérés par OPTI.
+
+'OPTIweb.html' est compatible avec l'ensemble des
+navigateurs et supports du moment (PC, tablettes, smartphones).
+*********************
+
+== Fiche projet - SPRINT 4
+
+[icon="../../images/UT2JJ128.png"]
+[TIP]
+====
+Membres de l'équipe enseignante:: Jean-Michel BRUEL, Jean-Michel INGLEBERT, André PÉNINOU et Olivier ROQUES
+
+*Université Toulouse 2 - IUT de Blagnac*
+
+Formation:: DUT INFO S3/Module MPA
+Projet:: OPTI/OPTIweb
+====
+
+== Fonctionnalités disponibles - SPRINT 4
+
+.Application
+--
+- En tant qu'internaute, je veux accéder à l'application OPTIweb depuis tout support fixe ou mobile
+- En tant qu'internaute, je veux pouvoir consulter les projets, les sujets, les étudiants et les intervenants dans des pages séparées
+- En tant qu'internaute, je veux pouvoir consulter le nom des développeurs de l'application, le nom du Product Owner ainsi que les technologies utilisées
+--
+
+.Page Projets
+--
+- En tant qu'internaute, je veux pour chaque projet en voir le nom, le titre, le client, le superviseur, le groupe et les étudiants réalisant le projet
+- En tant qu'internaute, je veux pouvoir rechercher un projet dans la liste des projets en fournissant une chaine de caractère quelconque
+--
+
+.Page Sujets
+--
+- En tant qu'internaute, je veux pour chaque sujet en voir le nom, le titre et le ou les noms des groupes d'étudiants réalisant le sujet
+- En tant qu'internaute, je veux pouvoir rechercher un sujet dans la liste des sujets en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un sujet et voir les projets réalisant le sujet
+--
+
+.Page Etudiants
+--
+- En tant qu'internaute, je veux pour chaque étudiant en voir le nom, le prénom ainsi que son groupe
+- En tant qu'internaute, je veux pouvoir rechercher un étudiant dans la liste des étudiants en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un étudiant et voir le projet qu'il réalise
+--
+
+.Page Intervenants
+--
+- En tant qu'internaute, je veux pour chaque intervenant en voir le nom, le prénom ainsi que le nombre de ses interventions en tant que Client ou Superviseur
+- En tant qu'internaute, je veux pouvoir rechercher un intervenant dans la liste des intervenants en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un intervenant et voir le(s) projet(s) où il intervient
+--
+
+== Comment lancer l'application OPTIweb
+
+. Sur tout support, charger l'url suivante dans un navigateur
+http://algec.iut-blagnac.fr/~jmi/MPA/OPTIweb.html
+
+
+[NOTE]
+====
+L'application 'OPTIweb.html' nécessite une connexion Internet
+lors de son lancement.
+
+Une fois chargée dans un navigateur, aucune communication réseau
+n'est éffectuée : vous pouvez alors travailler hors connexion.
+====
+
+== Comment sauvegarder  l'application OPTIweb
+
+. Enregistrer le fichier 'OPTIweb.html' sur votre support (environ 30Ko)
+. Charger le fichier 'OPTIweb.html' local dans un navigateur pour lancer l'application (une connexion réseau n'est requise qu'au chargement).
+
+== Génération du fichier 'OPTIweb.html'
+
+L'application de consultation 'OPTIweb.html' est intégralement générée
+par le programme 'MakeOPTIweb.java' qui à partir des fichiers csv (Sujets, Etudiants, Intervenants, Projets ...) fabrique le fichier 'OPTIweb.html'.
+
+NOTE: Le programme 'MakeOPTIweb.java' utilise la librairie de gestion des fichiers csv disponible dans le projet 'OPTI'.
+
+=== Organisation du fichier 'OPTIweb.html'
+
+Le fichier 'OPTIweb.html' produit par le programme 'MakeOPTIweb.java'
+possède la structure +html/jquery/mobile+ suivante :
+
+[source,html]
+----
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="OPTIweb VOPTIweb" />
+<title>0.1 - V0.1</title>
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />    <!-- <1> -->
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />    <!-- <2> -->
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>    <!-- <3> -->
+<script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>    <!-- <4> -->
+<style type='text/css'>    /* <5> */
+@media all and (orientation:portrait) { .landscape {display: none;} }
+@media all and (orientation:landscape) { .landscape {display: inline;} }
+</style>
+</head><body>
+
+    <!-- <6> -->
+    
+<script>    // <7> 
+ // li click handler which fills the projects search bar 
+ // with the value of the current data-find attribute
+ $( 'li[data-find]' ).on( 'click',function(event){
+  $("#autocomplete-input-projet").val($(this).attr('data-find')).trigger('change');
+ });
+</script>
+</body>
+</html>
+----
+<1> css font-awesome
+<2> css jquery-mobile
+<3> javascript jquery
+<4> javascript jquery mobile
+<5> css de gestion des classes d'orientation du support
+<6> Les pages #accueil, #credits, #projets, #sujets, #etudiants et #intervenants sont placées ici
+<7> handler jquery de sélection des projets depuis les pages #sujets, #etudiants ou #intervenants
+
+== OPTIweb : Page d'Accueil
+
+La Page d'Accueil permet d'accéder :
+
+. à la page 'Projets' : +OPTIweb.html#projets+
+. à la page 'Sujets' : +OPTIweb.html#sujets+
+. à la page 'Etudiants' : +OPTIweb.html#etudiants+
+. à la page 'Intervenants' : +OPTIweb.html#intervenants+
+. à la page 'Crédits' : +OPTIweb.html#credits+
+
+=== Contenu de la page d'accueil
+
+Le programme 'MakeOPTIweb.java' produit pour la page d'accueil le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page accueil -->
+<div data-role="page" id="accueil" data-title="OPTIweb - V0.1">
+<div data-role="header" data-add-back-btn="true">
+<h1>P<span class="landscape">rojets </span>tut<span class="landscape">orés</span> 2014-2015<br/>Département INFO<span class="landscape">RMATIQUE</span><br/>IUT de Blagnac</h1>
+<a href="#credits" data-theme="b" class="ui-btn-right">Crédits</a>   <!-- <1> -->
+</div>
+<div data-role="content">
+<ul data-role="listview" data-inset="true" id="listeSources">
+  <li><a href="#projets"><i class="fa fa-tasks"></i> Projets</a></li>   <!-- <1> -->
+  <li><a href="#sujets"><i class="fa fa-copy"></i> Sujets</a></li>   <!-- <1> -->
+  <li><a href="#etudiants"><i class="fa fa-group"></i> Etudiants</a></li>   <!-- <1> -->
+  <li><a href="#intervenants"><i class="fa fa-group"></i> Intervenants</a></li>   <!-- <1> -->
+</ul>
+</div>
+<div data-role="footer"> 
+ <h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa- fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page accueil -->
+----
+<1> lien de navigation vers la page cible
+
+== OPTIweb : Page Projets
+
+La Page Projets présente par défaut dans *une liste numérotée* l'ensemble des projets tutorés
+de l'année en indiquant leur nom, leur titre, leur client, leur superviseur et leur groupe d'étudiants.
+
+=== Contenu de la page Projets
+
+Le programme 'MakeOPTIweb.java' produit pour la page +#projets+ le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page projets -->
+<div data-role="page" id="projets" data-title="OPTIweb - V0.1">
+<div data-role="header" data-add-back-btn="true">
+<h1>Projets 2014-2015</h1>
+
+</div>
+<div data-role="content">
+<form class="ui-filterable">
+<input id="autocomplete-input-projet" name="projet" data-type="search" placeholder="Vous cherchez ?...">   <!-- <1> -->
+</form>
+<ol id="listeprojets" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="false" data-input="#autocomplete-input-projet">
+<li>   <!-- <2> -->
+<p>
+<b>[Archeologie]</b> Groupe de recherche Chasséen Méridional
+</p>
+<p>
+<b>Client :</b> TISSIER Evelyne
+</p>
+<p>
+<b>Superviseur :</b> CANUT Marie-Françoise
+</p>
+<p>
+<b>Groupe A :</b> Etienne LARROUY - Victor PINQUIER - Antoine RIVALIER - Jean-Sebastien TRILLE - 
+</p>
+</li>
+<!-- <3> -->
+</ol>
+</div>
+<div data-role="footer"> 
+ <h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa-tasks fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page projets -->
+----
+<1> Champ de recherche
+<2> Item du premier projet
+<3> Les autres projets sont placés ici
+
+== OPTIweb : Page Sujets
+
+La Page Sujets présente par défaut l'ensemble des Sujets
+de l'année en indiquant leur nom, leur titre et le ou les groupe(s) d'étudiants qui le réalise(nt).
+
+=== Contenu de la page Sujets
+
+Le programme 'MakeOPTIweb.java' produit pour la page +#sujets+ le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page sujets -->
+<div data-role="page" id="sujets" data-title="OPTIweb - V0.1">
+<div data-role="header" data-add-back-btn="true">    <!-- <1> -->
+<h1>Sujets 2014-2015</h1>
+
+</div>
+<div data-role="content">
+
+<form class="ui-filterable">
+<input id="autocomplete-input-sujet" name="sujet" data-type="search" placeholder="Vous cherchez ?">    <!-- <2> -->
+</form>
+<ol id="listesujets" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="false" data-input="#autocomplete-input-sujet" data-divider-theme="b" data-count-theme="a">
+<li data-role="list-divider">    <!-- <3> -->
+Sujet<span class="ui-li-count" title="Groupe" style="right: 40px !important;">Groupe</span>
+</li>
+<li data-find="[ApexEComm]">    <!-- <4> -->
+<a href="#projets">[ApexEComm] <br/>
+<div style="white-space:normal;">
+<span><b>Application et tutoriel Oracle Apex pour un site d'e-commerce</b>
+</span><span class="ui-li-count">I</span>
+</div>
+</a>
+</li>
+<!-- <5> -->
+</ol>
+</div>
+<div data-role="footer"> 
+ <h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa-copy fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page sujets -->
+----
+<1> Bouton de retour à la page d'accueil
+<2> Champ de recherche 
+<3> Item d'entête de liste
+<4> Item du premier sujet et chaine de sélection dans les projets (cf <<Handler-de-Selection,Handler de sélection des projets correspondants>>)
+<5> Les autres sujets sont placés ici
+
+=== OPTIweb : Sélectionner un sujet
+
+. Dans la liste des sujets, Cliquer sur la ligne correspondant au sujet choisi
+
+. L'ensemble des projets réalisant le sujet sélectionné est alors fourni
+
+[[Handler-de-Selection]]
+==== Handler de Sélection des projets correspondants
+
+[TIP]
+.Principe
+====
+La sélection d'un item provoque la saisie d'une chaine de recherche
+dans le champ de recherche des projets.
+====
+
+La sélection des projets correspondants à l'item choisi des pages '#sujets', '#etudiants' ou '#intervenants' s'effectue ainsi :
+
+. L'action +click+ sur les items (+li+) comportant 1 attribut +data-find+ 
++
+[source,javascript]
+----
+$( 'li[data-find]' ).on( 'click',function
+----
+. exécute le code (l'handler) suivant :
++
+[source,javascript]
+----
+$("#autocomplete-input-projet").val($(this).attr('data-find')).trigger('change');
+----
++
+--
+qui place le contenu actuel de l'attribut +data-find+ dans le champs +input+ de recherche des projets d'id +autocomplete-input-projet+, puis valide la modification.
+--
+
+. L'affichage de la page '#projets' qui résulte de l'action standard sur l'item, n'affichera que les projets sélectionnés.
+
+
+== OPTIweb : Page Etudiants
+
+La Page Etudiants présente par défaut l'ensemble des Etudiants
+de l'année dans une liste numérotée en indiquant leur nom, leur prénom et leur groupe.
+
+=== Contenu de la page Etudiants
+
+Le programme 'MakeOPTIweb.java' produit pour la page +#etudiants+ le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page etudiants -->
+<div data-role="page" id="etudiants" data-title="OPTIweb - V0.1">
+<div data-role="header" data-add-back-btn="true">    <!-- <1> -->
+<h1>Etudiants 2014-2015</h1>
+
+</div>
+<div data-role="content">
+  
+<form class="ui-filterable">
+<input id="autocomplete-input-etudiant" name="etudiant" data-type="search" placeholder="Etudiant ou Groupe X">    <!-- <2> -->
+</form>
+<ol id="listeetudiants" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="false" data-input="#autocomplete-input-etudiant" data-divider-theme="b">
+<li data-role="list-divider">    <!-- <3> -->
+Etudiant<span class="ui-li-count" title="Groupe" style="right: 40px !important;">Groupe</span>
+</li>
+<li data-find="Arnauld ALEX">    <!-- <4> -->
+<a href="#projets">ALEX Arnauld<span class="ui-li-count" title="Groupe">Groupe F</span>
+</a>
+</li>
+<!-- <5> -->
+</ol>
+</div>
+<div data-role="footer"> 
+ <h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa-group fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page etudiants -->
+----
+<1> Bouton de retour à la page d'accueil
+<2> Champ de recherche 
+<3> Item d'entête de liste
+<4> Item du premier étudiant et chaine de sélection dans les projets 
+<5> Les autres étudiants sont placés ici
+
+=== OPTIweb : Sélectionner un étudiant
+
+. Dans la liste des étudiants, Cliquer sur la ligne correspondant à l'étudiant choisi
+
+. Le projet réalisé par l'étudiant sélectionné est alors fourni
++
+Voir : <<Handler-de-Selection,Handler de sélection des projets correspondants>>
+
+
+== OPTIweb : Page Intervenants
+
+La Page Intervenants présente par défaut l'ensemble des Intervenants
+de l'année en indiquant leur nom, leur prénom et le nombre de fois où ils sont Client ou Superviseur.
+
+
+=== Contenu de la page Intervenants
+
+Le programme 'MakeOPTIweb.java' produit pour la page +#intervenants+ le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page intervenants -->
+<div data-role="page" id="intervenants" data-title="OPTIweb - V0.1">
+<div data-role="header" data-add-back-btn="true">    <!-- <1> -->
+<h1>Intervenants 2014-2015</h1>
+
+</div>
+<div data-role="content">
+  
+<form class="ui-filterable">
+<input id="autocomplete-input-intervenant" name="intervenant" data-type="search" placeholder="Intervenant">    <!-- <2> -->
+</form>
+<ul id="listeintervenants" data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="false" data-input="#autocomplete-input-intervenant" data-divider-theme="b">
+<li data-role="list-divider">    <!-- <3> -->
+Intervenant<span class="ui-li-count" style="right: 110px !important;" title="Client">Client</span><span class="ui-li-count" title="Superviseur">Superviseur</span>
+</li>
+<li data-find="BRUEL Jean-Michel">    <!-- <4> -->
+<a href="#projets">
+BRUEL Jean-Michel
+<span class="ui-li-count" style="right: 120px !important;" title="Client">3</span>
+<span class="ui-li-count" title="Superviseur">0</span>
+</a>
+</li>
+<!-- <5> -->
+</ul>
+</div>
+<div data-role="footer"> 
+ <h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa-group fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page intervenants -->
+----
+<1> Bouton de retour à la page d'accueil
+<2> Champ de recherche 
+<3> Item d'entête de liste
+<4> Item du premier intervenant et chaine de sélection dans les projets 
+<5> Les autres intervenants sont placés ici
+
+
+=== OPTIweb : Sélectionner un Intervenant
+
+. Dans la liste des intervenants, Cliquer sur la ligne correspondant à l'intervenant choisi
+
+. La liste des projets où l'intervenant sélectionné participe est alors fournie
++
+Voir : <<Handler-de-Selection,Handler de sélection des projets correspondants>>
+
+=== OPTIweb : Rechercher un Intervenant
+
+Pour rechercher un intervenant particulier :
+
+. Saisir une chaine dans le champ de recherche
+
+. L'ensemble des intervenants contenant la chaine saisie est alors fourni
+
+== OPTIweb : Page Crédits
+
+La Page Crédits permet d'accéder de consluter le nom du Product Owner, le nom des développeurs de l’application ainsi que les technologies utilisées.
+
+=== Contenu de la page Crédits
+
+Le programme 'MakeOPTIweb.java' produit pour la page '#credits' le code +html/jquery/mobile+ suivant :
+
+[source,html]
+----
+<!-- DEBUT page credits -->
+<div data-role="page" id="credits" data-title="OPTIweb - V0.1 - Crédits">
+<div data-role="header" data-add-back-btn="true">    <!-- <1> -->
+<h1>Crédits</h1>
+</div>
+<div data-role="content">
+<p>Cette application a été réalisée dans le cadre du module M3301/MPA du DUT Informatique à l'IUT de Blagnac.</p>
+<ul data-role="listview" data-inset="true" id="contacts" data-theme="a" data-divider-theme="b">
+    <li data-role="list-divider">Product Owner</li>
+    <li>André PÉNINOU</li>
+    <li>Université Toulouse 2 - IUT de Blagnac
+    <br/>Département INFORMATIQUE</li>
+</ul>
+<ul data-role="listview" data-inset="true" id="listecredits" data-theme="a" data-divider-theme="b">
+<li data-role="list-divider">Membres de l'équipe enseignante</li>
+<li>Jean-Michel BRUEL</li><li>Jean-Michel INGLEBERT</li><li>André PÉNINOU</li><li>Olivier ROQUES</li>
+</ul>
+<ul data-role="listview" data-inset="true" id="listepowered" data-theme="a" data-divider-theme="b">
+<li data-role="list-divider">Propulsé par</li>
+<li><a href="http://jquerymobile.com/" target="autrePage">http://jquerymobile.com/</a></li>
+<li><a href="http://fortawesome.github.io/Font-Awesome/" target="autrePage">http://fortawesome.github.io/Font-Awesome/</a></li>
+</ul>
+</div>
+<div data-role="footer"> 
+<h4>OPTIweb V<span class="landscape">ersion </span>0.1 <i class="fa fa- fa-2x"></i></h4> 
+</div>
+</div>
+<!-- FIN page credits -->
+----
+<1> Bouton de retour à la page d'accueil

@@ -1,0 +1,36 @@
+= MPA : Présentation finale de recette MPAstaff
+:Author:  DUT/INFO/M3301
+:lang: fr
+:slideshowlocation: Your computer
+:copyright: {date={localdate}}, {slideshowlocation} *** {author} *** Powered by AsciiDoc and W3C Slidy &#169; 
+:duration: 30
+:incremental: 1
+
+== Premier transparent
+
+A vous ...
+
+-  item 1
+-  item 2
+-  item 3
+
+NOTE: On compte en moyenne 3mn par transparent
+
+== Second transparent
+
+image:./images/diag0.png[]
+
+NOTE: Plus que 8 slides
+
+
+== Troisième transparent
+
+.HelloMonde.java
+----
+include::../src/HelloMonde.java[]
+----
+
+== Perspectives
+
+image:./images/sieste.png[]
+

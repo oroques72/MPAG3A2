@@ -1,0 +1,243 @@
+= OPTIweb : Documentation Utilisateur
+:Author:  DUT/INFO/M3301
+:lang: fr
+
+*********************
+'OPTIweb.html' est une application HTML de *consultation*
+des projets tutorés gérés par OPTI.
+
+'OPTIweb.html' est compatible avec l'ensemble des
+navigateurs et supports du moment (PC, tablettes, smartphones).
+*********************
+
+== Fiche projet - SPRINT 4
+
+[icon="../../images/UT2JJ128.png"]
+[TIP]
+====
+Membres de l'équipe enseignante:: Jean-Michel BRUEL, Jean-Michel INGLEBERT, André PÉNINOU et Olivier ROQUES
+
+*Université Toulouse 2 - IUT de Blagnac*
+
+Formation:: DUT INFO S3/Module MPA
+Projet:: OPTI/OPTIweb
+====
+
+== Fonctionnalités disponibles - SPRINT 4
+
+.Application
+--
+- En tant qu'internaute, je veux accéder à l'application OPTIweb depuis tout support fixe ou mobile
+- En tant qu'internaute, je veux pouvoir consulter les projets, les sujets, les étudiants et les intervenants dans des pages séparées
+- En tant qu'internaute, je veux pouvoir consulter le nom des développeurs de l'application, le nom du Product Owner ainsi que les technologies utilisées
+--
+
+.Page Projets
+--
+- En tant qu'internaute, je veux pour chaque projet en voir le nom, le titre, le client, le superviseur, le groupe et les étudiants réalisant le projet
+- En tant qu'internaute, je veux pouvoir rechercher un projet dans la liste des projets en fournissant une chaine de caractère quelconque
+--
+
+.Page Sujets
+--
+- En tant qu'internaute, je veux pour chaque sujet en voir le nom, le titre et le ou les noms des groupes d'étudiants réalisant le sujet
+- En tant qu'internaute, je veux pouvoir rechercher un sujet dans la liste des sujets en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un sujet et voir les projets réalisant le sujet
+--
+
+.Page Etudiants
+--
+- En tant qu'internaute, je veux pour chaque étudiant en voir le nom, le prénom ainsi que son groupe
+- En tant qu'internaute, je veux pouvoir rechercher un étudiant dans la liste des étudiants en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un étudiant et voir le projet qu'il réalise
+--
+
+.Page Intervenants
+--
+- En tant qu'internaute, je veux pour chaque intervenant en voir le nom, le prénom ainsi que le nombre de ses interventions en tant que Client ou Superviseur
+- En tant qu'internaute, je veux pouvoir rechercher un intervenant dans la liste des intervenants en fournissant une chaine de caractère quelconque
+- En tant qu'internaute, je veux pouvoir sélectionner un intervenant et voir le(s) projet(s) où il intervient
+--
+
+== Comment lancer l'application OPTIweb
+
+. Sur tout support, charger l'url suivante dans un navigateur
+http://algec.iut-blagnac.fr/~jmi/MPA/OPTIweb.html
+
+
+[NOTE]
+====
+L'application 'OPTIweb.html' nécessite une connexion Internet
+lors de son lancement.
+
+Une fois chargée dans un navigateur, aucune communication réseau
+n'est éffectuée : vous pouvez alors travailler hors connexion.
+====
+
+== Comment sauvegarder  l'application OPTIweb
+
+. Enregistrer le fichier 'OPTIweb.html' sur votre support (environ 30Ko)
+. Charger le fichier 'OPTIweb.html' local dans un navigateur pour lancer l'application (une connexion réseau n'est requise qu'au chargement).
+
+== OPTIweb : Page d'Accueil
+
+La Page d'Accueil permet d'accéder :
+
+. aux 'Projets' tutorés de l'année
+. aux 'Sujets' de l'année
+. aux 'Etudiants' du DUT INFO S3 de l'année
+. aux 'Intervenants' de l'année
++
+NOTE: Le Bouton image:captures/creditsButton400x600.png[] permet d'obtenir des informations
+sur l'application OPTIweb
+
+image:captures/accueil400x600.png[]
+
+
+
+== OPTIweb : Page Projets
+
+La Page Projets présente par défaut l'ensemble des projets tutorés
+de l'année en indiquant leur nom, leur titre, leur client, leur superviseur et leur groupe d'étudiants.
+
+=== OPTIweb : Rechercher un projet
+
+Pour rechercher un projet particulier :
+
+. Saisir une chaine dans le champ de recherche
++
+image:captures/searchFieldProjetWeb400x600.png[]
+
+. L'ensemble des projets contenant la chaine saisie est alors fourni
++
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page d'Accueil de  l'application OPTIweb
++
+image:captures/searchProjetsWeb400x600.png[]
+
+
+
+
+== OPTIweb : Page Sujets
+
+La Page Sujets présente par défaut l'ensemble des Sujets
+de l'année en indiquant leur nom, leur titre et le ou les groupe(s) d'étudiants qui le réalise(nt).
+
+=== OPTIweb : Sélectionner un sujet
+
+. Dans la liste des sujets, Cliquer sur la ligne correspondant au sujet choisi
++
+image:captures/lineSujetArchitekt400x600.png[]
+
+. L'ensemble des projets réalisant le sujet sélectionné est alors fourni
++
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page Sujets de  l'application OPTIweb
++
+image:captures/clickSujetArchitekt400x600.png[]
+
+
+=== OPTIweb : Rechercher un sujet
+
+Pour rechercher un sujet particulier :
+
+. Saisir une chaine dans le champ de recherche
++
+image:captures/searchFieldSujetLogiciel400x600.png[]
+
+. L'ensemble des sujets contenant la chaine saisie est alors fourni
++
+image:captures/searchSujetLogiciel400x600.png[]
+
+
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page d'Accueil de  l'application OPTIweb
+
+
+== OPTIweb : Page Etudiants
+
+La Page Etudiants présente par défaut l'ensemble des Etudiants
+de l'année en indiquant leur nom, leur prénom et leur groupe.
+
+
+=== OPTIweb : Sélectionner un étudiant
+
+. Dans la liste des étudiants, Cliquer sur la ligne correspondant à l'étudiant choisi
++
+image:captures/ligneEtudiantPiboubes400x600.png[]
+
+. Le projet réalisé par l'étudiant sélectionné est alors fourni
++
+image:captures/clickEtudiantPiboubes400x600.png[]
+
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page Etudiants de  l'application OPTIweb
+
+=== OPTIweb : Rechercher un étudiant
+
+Pour rechercher un étudiant particulier :
+
+. Saisir une chaine dans le champ de recherche
++
+image:captures/searchFieldEtudiantLopez400x600.png[]
+
+[NOTE]
+.Pour Effacer la sélection
+====
+- Cliquer sur la X du champ de recherche
++
+image:captures/searchEtudiantFieldEmpty400x600.png[]
+====
+
+. L'ensemble des étudiants contenant la chaine saisie est alors fourni
++
+image:captures/searchEtudiantLopez400x600.png[]
+
+=== OPTIweb : Rechercher un groupe
+
+Pour rechercher un groupe particulier :
+
+. Saisir 'groupe ' suivi du nom du groupe dans le champ de recherche
+
+. L'ensemble des étudiants du groupe saisi est alors fourni
++
+image:captures/searchEtudiantGroupeB400x600.png[]
+
+
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page d'Accueil de  l'application OPTIweb
+
+
+== OPTIweb : Page Intervenants
+
+La Page Intervenants présente par défaut l'ensemble des Intervenants
+de l'année en indiquant leur nom, leur prénom et le nombre de fois où ils sont Client ou Superviseur.
+
+=== OPTIweb : Sélectionner un Intervenant
+
+. Dans la liste des intervenants, Cliquer sur la ligne correspondant à l'intervenant choisi
+
+. La liste des projets où l'intervenant sélectionné participe est alors fournie
++
+image:captures/clickIntervenantRoques400x600.png[]
+
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page Intervenants de  l'application OPTIweb
+
+=== OPTIweb : Rechercher un Intervenant
+
+Pour rechercher un intervenant particulier :
+
+. Saisir une chaine dans le champ de recherche
++
+image:captures/searchFieldIntervenantsBRUEL400x600.png[]
+
+. L'ensemble des intervenants contenant la chaine saisie est alors fourni
++
+image:captures/searchIntervenantsBRUEL400x600.png[]
+
+[NOTE]
+.Pour Effacer la sélection
+====
+- Cliquer sur la X du champ de recherche
++
+image:captures/searchEtudiantFieldEmpty400x600.png[]
+====
+
+NOTE: Le Bouton image:captures/backButton400x600.png[] permet de revenir à la Page d'Accueil de  l'application OPTIweb
+
+
