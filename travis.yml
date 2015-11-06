@@ -1,0 +1,10 @@
+language: java
+script:
+  - java -version
+  - javac -version
+  - python -V
+  - phantomjs -v
+  - echo Hello from DUT INFO Blagnac
+  - ls -alF
+  - cd sprint_5
+  - javac -cp .:./bin -d ./bin ./src/HelloMonde.java
